@@ -1,0 +1,10 @@
+body {
+  font-family: system-ui;
+  line-height: 25px;
+  background: linear-gradient(to bottom, lightblue, #235e71);
+  color: black;
+  height: 100vh;
+  margin: 0;
+  place-items: center;
+  padding: 10px;
+}

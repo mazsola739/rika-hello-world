@@ -1,0 +1,117 @@
+function getOccuranceOfExpectedCharInString(name, expectedChar) {
+  return (
+    [...name].filter((char) => char.toLowerCase() === expectedChar).length % 10
+  );
+}
+
+function add(number1, number2) {
+  return (number1 + number2) % 10;
+}
+
+function calculate() {
+  var name1 = document.getElementById("name1").value;
+  var name2 = document.getElementById("name2").value;
+  var names = name1 + " " + name2;
+
+  var occurenceForI = getOccuranceOfExpectedCharInString(names, "i");
+
+  var occurenceForL = getOccuranceOfExpectedCharInString(names, "l");
+  var occurenceForO = getOccuranceOfExpectedCharInString(names, "o");
+  var occurenceForV = getOccuranceOfExpectedCharInString(names, "v");
+  var occurenceForE = getOccuranceOfExpectedCharInString(names, "e");
+
+  var occurenceForY = getOccuranceOfExpectedCharInString(names, "y");
+  var occurenceForU = getOccuranceOfExpectedCharInString(names, "u");
+
+  document.getElementsByTagName("td")[0].innerHTML = occurenceForI;
+
+  document.getElementsByTagName("td")[2].innerHTML = occurenceForL;
+  document.getElementsByTagName("td")[3].innerHTML = occurenceForO;
+  document.getElementsByTagName("td")[4].innerHTML = occurenceForV;
+  document.getElementsByTagName("td")[5].innerHTML = occurenceForE;
+
+  document.getElementsByTagName("td")[7].innerHTML = occurenceForY;
+  document.getElementsByTagName("td")[8].innerHTML = occurenceForO;
+  document.getElementsByTagName("td")[9].innerHTML = occurenceForU;
+
+  var td13 = add(occurenceForI, occurenceForL);
+  var td14 = add(occurenceForL, occurenceForO);
+  var td15 = add(occurenceForO, occurenceForV);
+  var td16 = add(occurenceForV, occurenceForE);
+
+  var td18 = add(occurenceForE, occurenceForY);
+  var td19 = add(occurenceForY, occurenceForO);
+  var td20 = add(occurenceForO, occurenceForU);
+
+  document.getElementsByTagName("td")[13].innerHTML = td13;
+  document.getElementsByTagName("td")[14].innerHTML = td14;
+  document.getElementsByTagName("td")[15].innerHTML = td15;
+  document.getElementsByTagName("td")[16].innerHTML = td16;
+
+  document.getElementsByTagName("td")[18].innerHTML = td18;
+  document.getElementsByTagName("td")[19].innerHTML = td19;
+  document.getElementsByTagName("td")[20].innerHTML = td20;
+
+  var td25 = add(td13, td14);
+  var td26 = add(td14, td15);
+  var td27 = add(td15, td16);
+
+  var td29 = add(td16, td18);
+  var td30 = add(td18, td19);
+  var td31 = add(td19, td20);
+
+  document.getElementsByTagName("td")[25].innerHTML = td25;
+  document.getElementsByTagName("td")[26].innerHTML = td26;
+  document.getElementsByTagName("td")[27].innerHTML = td27;
+
+  document.getElementsByTagName("td")[29].innerHTML = td29;
+  document.getElementsByTagName("td")[30].innerHTML = td30;
+  document.getElementsByTagName("td")[31].innerHTML = td31;
+
+  var td37 = add(td25, td26);
+  var td38 = add(td26, td27);
+
+  var td40 = add(td27, td29);
+  var td41 = add(td29, td30);
+  var td42 = add(td30, td31);
+
+  document.getElementsByTagName("td")[37].innerHTML = td37;
+  document.getElementsByTagName("td")[38].innerHTML = td38;
+
+  document.getElementsByTagName("td")[40].innerHTML = td40;
+  document.getElementsByTagName("td")[41].innerHTML = td41;
+  document.getElementsByTagName("td")[42].innerHTML = td42;
+
+  var td49 = add(td37, td38);
+
+  var td51 = add(td38, td40);
+  var td52 = add(td40, td41);
+  var td53 = add(td41, td42);
+
+  document.getElementsByTagName("td")[49].innerHTML = td49;
+
+  document.getElementsByTagName("td")[51].innerHTML = td51;
+  document.getElementsByTagName("td")[52].innerHTML = td52;
+  document.getElementsByTagName("td")[53].innerHTML = td53;
+
+  var td62 = add(td49, td51);
+  var td63 = add(td51, td52);
+  var td64 = add(td52, td53);
+
+  document.getElementsByTagName("td")[62].innerHTML = td62;
+  document.getElementsByTagName("td")[63].innerHTML = td63;
+  document.getElementsByTagName("td")[64].innerHTML = td64;
+
+  var td75 = add(td63, td64);
+  var td73 = td62 + td63 === 10 && td75 === 0 ? 1 : "";
+  var td74 =
+    (add(td62, td63) === 0 && td73 === 1) || add(td62, td63) !== 0
+      ? add(td62, td63)
+      : "";
+  var td76 = "%";
+
+  document.getElementsByTagName("td")[73].innerHTML = td73;
+  document.getElementsByTagName("td")[74].innerHTML = td74;
+  document.getElementsByTagName("td")[75].innerHTML = td75;
+  document.getElementsByTagName("td")[76].innerHTML = td76;
+}
