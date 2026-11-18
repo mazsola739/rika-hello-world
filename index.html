@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<main>
+
+<section>
+<h2>Matchmaker</h2>
 <p>
   <div>
     <span>Name #1: </span>
@@ -123,6 +127,37 @@
       </tr>
     </table>
 </p>
+</section>
+
+<section>
+  <h2>2 Syl w/ luv (if its not perfect, ill make it!)</h2>
+  <p>
+    My partner and I only got 44%. Then my partner said: "if its not
+    perfect, ill make it!", added "llllll" to the end of the name,
+    and it became 100%!
+  </p>
+  <p>This button tells you which letters are missing to reach 100%.</p>
+  <button onclick="howManyMissing()">how many missing to 100%</button>
+  <div id="missing"></div>
+</section>
+
+<section>
+  <h2>Hello World!</h2>
+  <p>
+    When I was a kid at school, we had a funny way to find out how much
+    a boy and a girl love each other: we wrote it down by hand, just like
+    this table. That gave me the idea to make it digital.
+  </p>
+  <p>
+    How it works: the first row shows how many times each letter of
+    "I LOVE YOU" appears in the two names. In every next row, two
+    neighbouring numbers are added together and only the last digit is
+    kept (for example 7 + 5 = 12 &rarr; 2). The numbers left at the bottom
+    are your love percentage!
+  </p>
+</section>
+
+</main>
 <script src="script.js"></script>
 </body>
 </html>

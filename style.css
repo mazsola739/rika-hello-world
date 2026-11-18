@@ -3,8 +3,56 @@ body {
   line-height: 25px;
   background: linear-gradient(to bottom, lightblue, #235e71);
   color: black;
-  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
   margin: 0;
   place-items: center;
-  padding: 10px;
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+section {
+  flex: 1;
+  min-width: 280px;
+  padding: 0 20px 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+h2 {
+  font-size: 20px;
+  color: #235e71;
+}
+
+input {
+  padding: 4px 8px;
+  border: 1px solid #235e71;
+  border-radius: 6px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #235e71;
+  color: white;
+  cursor: pointer;
+}
+
+th,
+td {
+  width: 20px;
+  text-align: center;
+}
+
+#missing {
+  margin-top: 10px;
+  font-weight: bold;
 }
