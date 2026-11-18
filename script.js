@@ -114,4 +114,41 @@ function calculate() {
   document.getElementsByTagName("td")[74].innerHTML = td74;
   document.getElementsByTagName("td")[75].innerHTML = td75;
   document.getElementsByTagName("td")[76].innerHTML = td76;
+
+  // the result without the % sign, for example "96" or "100"
+  return "" + td73 + td74 + td75;
+}
+
+function howManyMissing() {
+  var message = document.getElementById("missing");
+  var name2 = document.getElementById("name2");
+  var originalName2 = name2.value;
+
+  if (calculate() === "100") {
+    message.innerHTML = "Nothing is missing, it's already 100%!";
+    return;
+  }
+
+  // try adding 0-9 "l", 0-9 "i" and 0-9 "u" letters to name #2
+  // (with these 3 letters every pair of names can reach 100%)
+  var answer = "";
+  for (var l = 0; l < 10; l++) {
+    for (var i = 0; i < 10; i++) {
+      for (var u = 0; u < 10; u++) {
+        var extra = "l".repeat(l) + "i".repeat(i) + "u".repeat(u);
+        name2.value = originalName2 + extra;
+
+        // keep the shortest one (<= so that more "l" wins, like in the story)
+        if (calculate() === "100" && (answer === "" || extra.length <= answer.length)) {
+          answer = extra;
+        }
+      }
+    }
+  }
+
+  // put the original name back
+  name2.value = originalName2;
+  calculate();
+
+  message.innerHTML = "Missing: " + answer;
 }
