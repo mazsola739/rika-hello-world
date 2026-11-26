@@ -16,13 +16,26 @@ body {
   margin: 0;
   place-items: center;
   padding: 20px;
+  /* a column, so the footer can be pushed down to the bottom */
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  width: 100%;
   max-width: 1100px;
+  margin: 0 auto 20px;
+}
+
+/* the matchmaker box: name fields and table in the middle */
+section:first-child {
+  text-align: center;
+}
+
+table {
   margin: 0 auto;
 }
 
@@ -66,8 +79,10 @@ td {
 }
 
 footer {
+  width: 100%;
   max-width: 1100px;
-  margin: 20px auto 0;
+  /* margin-top: auto pushes the footer to the bottom of the page */
+  margin: auto auto 0;
   padding: 0 20px;
   box-sizing: border-box;
   border-radius: 10px;
