@@ -152,3 +152,64 @@ function howManyMissing() {
 
   message.innerHTML = "Missing: " + answer;
 }
+
+// ---- Contact me ----
+// The form sends the message to Web3Forms (https://web3forms.com), which e-mails it to me.
+// This key is meant to be public: it can only send messages to my own inbox.
+var contactFormKey = "8674bf2a-c248-426a-aed4-379fa983cb34";
+
+function openContact() {
+  document.getElementById("contact").showModal();
+}
+
+function closeContact() {
+  document.getElementById("contact").close();
+}
+
+// a click on the dark page around the window closes it too
+document.getElementById("contact").addEventListener("click", function (event) {
+  if (event.target === event.currentTarget) {
+    closeContact();
+  }
+});
+
+function sendMessage(event) {
+  event.preventDefault(); // don't reload the page
+
+  var form = event.target;
+  var sendButton = document.getElementById("send");
+  var status = document.getElementById("status");
+
+  var message = Object.fromEntries(new FormData(form));
+  message.access_key = contactFormKey;
+  message.subject = "Matchmaker: a message from " + message.name;
+  message.from_name = "Matchmaker contact form";
+
+  sendButton.disabled = true;
+  sendButton.innerHTML = "Sending…";
+  status.innerHTML = "";
+
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(message),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (result) {
+      if (result.success) {
+        form.reset();
+        status.innerHTML = "Thank you! Your message is on its way, I'll write back soon.";
+      } else {
+        status.innerHTML = "Sorry, the message couldn't be sent. Please try again a bit later.";
+      }
+    })
+    .catch(function () {
+      status.innerHTML = "Sorry, the message couldn't be sent. Please try again a bit later.";
+    })
+    .finally(function () {
+      sendButton.disabled = false;
+      sendButton.innerHTML = "Send message";
+    });
+}

@@ -168,9 +168,40 @@
   <p>
     <a href="https://codepen.io/Mazsola39/pen/RwGpjQz" target="_blank">original sandbox (CodePen, 2020)</a> &middot;
     <a href="https://mazsola739.github.io/mazsola739/" target="_blank">Portfolio</a> &middot;
-    <a href="https://github.com/mazsola739/rika-hello-world" target="_blank">GitHub</a>
+    <a href="https://github.com/mazsola739/rika-hello-world" target="_blank">GitHub</a> &middot;
+    <button class="link" onclick="openContact()">Contact me</button>
   </p>
 </footer>
+
+<!-- the Contact me window -->
+<dialog id="contact">
+  <div class="window">
+    <button class="close" onclick="closeContact()" aria-label="Close">&times;</button>
+    <h2>Get in touch</h2>
+    <p>Write me a message and I'll write back.</p>
+
+    <form onsubmit="sendMessage(event)">
+      <label>Name
+        <input name="name" required maxlength="100" autocomplete="name">
+      </label>
+      <label>E-mail
+        <input name="email" type="email" required maxlength="200" autocomplete="email">
+      </label>
+      <label>Message
+        <textarea name="message" required maxlength="5000"></textarea>
+      </label>
+      <!-- people never see this box, spam bots tick it -->
+      <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+
+      <button id="send" type="submit">Send message</button>
+      <p id="status"></p>
+      <p class="small">
+        Your message reaches my inbox through Web3Forms. I only use your name
+        and e-mail address to write back to you.
+      </p>
+    </form>
+  </div>
+</dialog>
 
 <script src="script.js"></script>
 </body>
